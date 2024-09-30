@@ -59,3 +59,53 @@ cd server
 npm install
 
 ```
+
+Frontend:
+```bash 
+cd ../client
+npm install
+
+```
+
+### 3. Configure Environment Variables 🔐
+Create a .env file in the server folder with the following content:
+```bash
+MONGO_URI=<Your MongoDB URI>
+JWT_SECRET=<Your JWT Secret Key>
+PORT=5000
+```
+For Google Maps API (or Mapbox), set up the API keys for your map in the frontend environment.
+
+### 4. Run the Application 🚀
+Backend:
+```bash
+cd server
+npm run dev
+
+```
+
+Frontend:
+```bash
+cd ../client
+npm start
+```
+
+📂 Project Structure
+```bash
+hackathon-tracker/
+│
+├── client/                     # React Frontend
+│   ├── src/                    # React Components & Pages
+│   ├── public/                 # Public Assets
+│   └── package.json            # React Dependencies
+│
+├── server/                     # Node.js Backend
+│   ├── models/                 # Mongoose Models (Hackathons, Users)
+│   ├── routes/                 # API Routes (Auth, Hackathons)
+│   ├── controllers/            # Controllers for CRUD Operations
+│   ├── server.js               # Express.js Main Server File
+│   └── package.json            # Backend Dependencies
+│
+├── README.md                   # Project Documentation
+└── .env                        # Environment Variables
+```
