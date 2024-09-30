@@ -50,3 +50,12 @@ Follow these steps to set up the Hackathon Tracker project on your local machine
 ```bash
 git clone https://github.com/yourusername/hackathon-tracker.git
 cd hackathon-tracker
+```
+
+### 2. Install Dependencies 🛠
+Backend:
+```bash 
+cd server
+npm install
+
+```
