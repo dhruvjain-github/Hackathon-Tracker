@@ -6,9 +6,9 @@ const hackathonSchema = new mongoose.Schema({
   startDate: { type: Date, required: true },
   endDate: { type: Date, required: true },
   participants: { type: Number, required: true },
-  prize: { type: String, required: true },
+  prize: { type: String, required: true,default:"will be revealed at hackathon " },
   teamSize: { type: Number, required: true },
-  problemStatement: { type: String, required: true },
+  problemStatement: { type: String, required: true,default:"will be revealed at hackathon " },
   registrationLink: { type: String, required: true }
 }, { timestamps: true });
 
