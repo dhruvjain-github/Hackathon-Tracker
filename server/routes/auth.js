@@ -1,9 +1,11 @@
 import express from 'express';
+import {singup,login,getuserbyid} from '../controllers/usercontroller'
+import {protect} from '../middleware/authMiddleware'
 const router = express.Router();
 
-// Example route for user login
-router.post('/login', (req, res) => {
-    res.send('Login successful');
-});
+
+router.post('/register', singup);
+router.post('/login',login);
+router.get('/profile',protect,getuserbyid)
 
 export default router;

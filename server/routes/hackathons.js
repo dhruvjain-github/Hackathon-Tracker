@@ -5,8 +5,6 @@ const router = express.Router();
 
 router.get('/', getHackathon);    
 router.get('/:id',getHackathonByid)    
-router.post('/', createHackathon);     
-router.patch('/:id', updateHackathon);  
-router.delete('/:id', deleteHackathon);  
+
 
 export default router;
