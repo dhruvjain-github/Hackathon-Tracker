@@ -2,7 +2,7 @@ import React from 'react'
 
 function Hero() {
   return (
-    <div className="hero bg-[#1B1B1B] min-h-80"> {/* Changed to dark background */}
+    <div className="hero bg-[#1B1B1B] min-h-96"> {/* Changed to dark background */}
       <div className="hero-content flex-col lg:flex-row-reverse">
         <img
           src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
