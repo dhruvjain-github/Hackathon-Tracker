@@ -2,26 +2,28 @@ import HackathonModel from "../models/HackathonModel.js";
 
 export const getHackathon = async (req, res) => {
     try {
-        const allHackathon = await HackathonModel.find();
-        res.status(200).json(allHackathon)
+        const allHackathons = await HackathonModel.find(); // Fetch all hackathons
+        res.status(200).json(allHackathons);
     } catch (error) {
-        console.log(error);
-        res.status(500).json({ message: 'Error retrieving Hackathons', error })
+        console.error(error);
+        res.status(500).json({ message: 'Error retrieving Hackathons', error });
     }
-}
+};
 
-export const getHackathonByid = async (req, res) => {
+
+export const getHackathonById = async (req, res) => {
     try {
-        const { id } = req.params;
-        const Hackid = await HackathonModel.findById(id)
-        if (!Hackid) {
-            return res.status(404).json({ message: 'Hackathon not found' });
-        }
-        else {
-            return res.status(201).json(Hackid)
+        const { id } = req.params; // Extract id from params
+        const hackathon = await HackathonModel.findById(id); // Find hackathon by ID
+
+        if (!hackathon) {
+            res.status(404).json({ message: 'Hackathon not found' });
+        } else {
+            res.status(200).json(hackathon);
         }
     } catch (error) {
-        console.log(error);
-        res.status(500).json({ message: 'Error retrieving Hackathons', error })
+        console.error(error);
+        res.status(500).json({ message: 'Error retrieving Hackathon', error });
     }
-}
+};
+

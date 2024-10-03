@@ -37,58 +37,72 @@ export const deleteuser=async(req,res)=>{
 
 export const createHackathon = async (req, res) => {
     try {
-        const { name, location, startDate, endDate, participants, prize, teamSize, problemStatement, registrationLink } = req.body
+        const { name, location, startDate, endDate, participants, prize, teamSize, problemStatement, registrationLink } = req.body;
 
-        const newHack = await HackathonModel({ name, location, startDate, endDate, participants, prize, teamSize, problemStatement, registrationLink })
+        const newHackathon = new HackathonModel({
+            name,
+            location,
+            startDate,
+            endDate,
+            participants,
+            prize: prize || "will be revealed at hackathon", // Default value if not provided
+            teamSize,
+            problemStatement: problemStatement || "will be revealed at hackathon", // Default value if not provided
+            registrationLink
+        });
 
-        await newHack.save()
-        res.status(201).json(newHack);
+        await newHackathon.save();
+        res.status(201).json(newHackathon);
     } catch (error) {
-        console.log(error);
-        res.status(500).json({ message: 'Error creating Hackathons', error })
-
+        console.error(error);
+        res.status(500).json({ message: 'Error creating Hackathon', error });
     }
-}
+};
 
 
 export const updateHackathon = async (req, res) => {
     try {
-        const id = req.params;
+        const { id } = req.params; // Extract id from params
         const { name, location, startDate, endDate, participants, prize, teamSize, problemStatement, registrationLink } = req.body;
-        const updated=await HackathonModel.findByIdAndUpdate(id,
-            { name, location, startDate, endDate, participants, prize, teamSize, problemStatement, registrationLink },
-            { new: true }
-        )
-        if(!updated)
-        {
-            res.status(404).json({message:"Hackathon not updated"})
-        }
-        else
-        {
-            res.status(200).json(updated)
-        }
 
+        const updatedHackathon = await HackathonModel.findByIdAndUpdate(
+            id,
+            {
+                name,
+                location,
+                startDate,
+                endDate,
+                participants,
+                prize: prize || "will be revealed at hackathon", // Keep existing value or default
+                teamSize,
+                problemStatement: problemStatement || "will be revealed at hackathon", // Keep existing value or default
+                registrationLink
+            },
+            { new: true } // Return the updated document
+        );
+
+        if (!updatedHackathon) {
+            res.status(404).json({ message: "Hackathon not updated" });
+        } else {
+            res.status(200).json(updatedHackathon);
+        }
     } catch (error) {
         res.status(500).json({ message: 'Error updating Hackathon', error });
     }
+};
 
-}
 
-export const deleteHackathon=async(req,res)=>{
+export const deleteHackathon = async (req, res) => {
     try {
-        const hackid = req.params.id;
-        
-        const deleted=await HackathonModel.findByIdAndDelete(hackid)
-        if(!deleted)
-        {
-            res.status(404).json({message:"Hackathon not deleted"})
-        }
-        else
-        {
-            res.status(200).json({message:"hackathon deleted"})
-        }
+        const hackid = req.params.id; // Extract hackathon ID from the request params
 
+        const deletedHackathon = await HackathonModel.findByIdAndDelete(hackid);
+        if (!deletedHackathon) {
+            res.status(404).json({ message: "Hackathon not deleted" });
+        } else {
+            res.status(200).json({ message: "Hackathon deleted" });
+        }
     } catch (error) {
         res.status(500).json({ message: 'Error deleting Hackathon', error });
     }
-}
+};
