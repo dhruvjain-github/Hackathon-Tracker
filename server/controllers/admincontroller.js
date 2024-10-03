@@ -39,19 +39,18 @@ export const createHackathon = async (req, res) => {
     try {
         const { name, location, startDate, endDate, participants, prize, teamSize, problemStatement, registrationLink } = req.body;
 
-        const newHackathon = new HackathonModel({
+        const newHackathon = await HackathonModel.create({
             name,
             location,
             startDate,
             endDate,
             participants,
-            prize: prize || "will be revealed at hackathon", // Default value if not provided
+            prize: prize || "will be revealed at hackathon", 
             teamSize,
-            problemStatement: problemStatement || "will be revealed at hackathon", // Default value if not provided
+            problemStatement: problemStatement || "will be revealed at hackathon",
             registrationLink
         });
 
-        await newHackathon.save();
         res.status(201).json(newHackathon);
     } catch (error) {
         console.error(error);
@@ -62,7 +61,7 @@ export const createHackathon = async (req, res) => {
 
 export const updateHackathon = async (req, res) => {
     try {
-        const { id } = req.params; // Extract id from params
+        const { id } = req.params; 
         const { name, location, startDate, endDate, participants, prize, teamSize, problemStatement, registrationLink } = req.body;
 
         const updatedHackathon = await HackathonModel.findByIdAndUpdate(
@@ -73,12 +72,12 @@ export const updateHackathon = async (req, res) => {
                 startDate,
                 endDate,
                 participants,
-                prize: prize || "will be revealed at hackathon", // Keep existing value or default
+                prize: prize || "will be revealed at hackathon", 
                 teamSize,
-                problemStatement: problemStatement || "will be revealed at hackathon", // Keep existing value or default
+                problemStatement: problemStatement || "will be revealed at hackathon", 
                 registrationLink
             },
-            { new: true } // Return the updated document
+            { new: true } 
         );
 
         if (!updatedHackathon) {
@@ -94,7 +93,7 @@ export const updateHackathon = async (req, res) => {
 
 export const deleteHackathon = async (req, res) => {
     try {
-        const hackid = req.params.id; // Extract hackathon ID from the request params
+        const hackid = req.params.id; 
 
         const deletedHackathon = await HackathonModel.findByIdAndDelete(hackid);
         if (!deletedHackathon) {

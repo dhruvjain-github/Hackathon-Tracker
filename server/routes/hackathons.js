@@ -1,10 +1,10 @@
 import express from 'express';
-import { getHackathon,getHackathonByid,createHackathon,updateHackathon,deleteHackathon } from '../controllers/hackathoncontroller.js';
+import { getHackathon,getHackathonById } from '../controllers/hackathoncontroller.js';
 
 const router = express.Router();
 
 router.get('/', getHackathon);    
-router.get('/:id',getHackathonByid)    
+router.get('/:id',getHackathonById)    
 
 
 export default router;

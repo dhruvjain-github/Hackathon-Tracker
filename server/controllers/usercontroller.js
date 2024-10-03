@@ -2,7 +2,7 @@ import UserModel from '../models/UserModel.js'
 import bcrypt from 'bcrypt'
 import jwt from "jsonwebtoken"
 
-export const singup = async (req, res) => {
+export const signup = async (req, res) => {
 
     try {
         const { username, email, password, role } = req.body;
@@ -25,7 +25,6 @@ export const singup = async (req, res) => {
             password: hashedpass,
             role
         });
-        await newuser.save()
 
         const token=jwt.sign(
             {id:newuser._id},
@@ -54,14 +53,14 @@ export const login=async(req,res)=>{
             res.status(404).json({message:"invalid Credentials!"})
         }
 
-        const ispassword= await bcrypt.compare(password,UserModel.password)
+        const ispassword= await bcrypt.compare(password,existingUser.password)
         if(!ispassword)
         {
             res.status(404).json({message:"invalid Credentials!"})
         }
 
         const token=jwt.sign(
-            {id:newuser._id},
+            {id:existingUser._id},
             process.env.JWT_SECRET,
             {expiresIn: '2h' }
         )
@@ -84,7 +83,7 @@ export const getuserbyid=async (req,res)=>{
         const user= await UserModel.findById(userid).select('-password')
         if(!user)
         {
-            res.status(404).json({message:"user not found"})
+            return res.status(404).json({message:"user not found"})
         }
         res.status(200).json(user)
     } catch (error) {

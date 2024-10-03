@@ -1,15 +1,15 @@
 import mongoose from 'mongoose';
 
-// Defining the hackathon schema with your requirements
+
 const hackathonSchema = new mongoose.Schema({
   name: { type: String, required: true },
   location: { type: String, required: true },
   startDate: { type: Date, required: true },
   endDate: { type: Date, required: true },
   participants: { type: Number, required: true },
-  prize: { type: String, default: "will be revealed at hackathon" }, // Default value added
+  prize: { type: String, default: "will be revealed at hackathon" }, 
   teamSize: { type: Number, required: true },
-  problemStatement: { type: String, default: "will be revealed at hackathon" }, // Default value added
+  problemStatement: { type: String, default: "will be revealed at hackathon" }, 
   registrationLink: { type: String, required: true }
 }, { timestamps: true });
 
