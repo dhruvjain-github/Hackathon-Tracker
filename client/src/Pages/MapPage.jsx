@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import Navbar from '../components/Navbar';
-// Optional: Customize the marker icon if needed
+
+// Customize the marker icon
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
@@ -14,7 +15,7 @@ const MapPage = () => {
   const [currentLocation, setCurrentLocation] = useState([51.505, -0.09]); // Default to London
   const [loaded, setLoaded] = useState(false);
 
-  // Use browser's geolocation to get the user's live location
+  // Get the user's live location using geolocation
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -27,26 +28,40 @@ const MapPage = () => {
   }, []);
 
   return (
-    <div>
-        <Navbar/>
-      {loaded ? (
-        <MapContainer
-          center={currentLocation}
-          zoom={13}
-          style={{ height: '100vh', width: '100%' }}
-        >
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          />
-          <Marker position={currentLocation}>
-            <Popup>You are here!</Popup>
-          </Marker>
-          {/* Add additional markers for hackathons if needed */}
-        </MapContainer>
-      ) : (
-        <p>Loading map...</p>
-      )}
+    <div className="bg-gray-100 min-h-screen">
+      <Navbar />
+
+      {/* Interactive Text */}
+      <div className="text-center p-4 bg-blue-100 rounded-lg shadow-md mx-4 md:mx-20 lg:mx-40 mt-5 mb-6">
+        <h2 className="text-2xl font-semibold text-blue-700">Explore the Hackathons Near You</h2>
+        <p className="mt-2 text-gray-600">
+          Find hackathons happening in your area. Your location is marked on the map below. You can zoom in and explore nearby events!
+        </p>
+      </div>
+
+      {/* Map Section */}
+      <div className="mx-4 md:mx-20 lg:mx-40">
+        {loaded ? (
+          <MapContainer
+            center={currentLocation}
+            zoom={13}
+            scrollWheelZoom={false}
+            style={{ height: '70vh', width: '100%', borderRadius: '10px', overflow: 'hidden' }}
+            className="shadow-lg"
+          >
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            />
+            <Marker position={currentLocation}>
+              <Popup>You are here!</Popup>
+            </Marker>
+            {/* Add additional markers for hackathons if needed */}
+          </MapContainer>
+        ) : (
+          <p className="text-center text-gray-600">Loading map...</p>
+        )}
+      </div>
     </div>
   );
 };
