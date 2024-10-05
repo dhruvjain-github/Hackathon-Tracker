@@ -1,10 +1,10 @@
 import express from 'express';
-import {signup,login,getuserbyid} from '../controllers/usercontroller'
-import {protect} from '../middleware/authMiddleware'
+import {signup,login,getuserbyid} from '../controllers/usercontroller.js'
+import {protect} from '../middleware/authMiddleware.js'
 const router = express.Router();
 
 
-router.post('/register', signup);
+router.post('/signup', signup);
 router.post('/login',login);
 router.get('/profile',protect,getuserbyid)
 

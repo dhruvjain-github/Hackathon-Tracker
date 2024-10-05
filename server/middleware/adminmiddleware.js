@@ -1,4 +1,4 @@
-import UserModel from '../models/UserModel'
+import UserModel from '../models/UserModel.js'
 
 export const isadmin=async (req,res,next)=>{
     if (req.user && req.user.role === 'admin') {
