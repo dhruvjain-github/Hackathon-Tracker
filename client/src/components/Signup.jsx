@@ -106,10 +106,10 @@ function Signup() {
                   <input
                     type="radio"
                     name="role"
-                    value="User"
+                    value="user"
                     className="radio radio-primary"
-                    checked={Role === 'User'}
-                    onChange={() => setRole('User')}
+                    checked={Role === 'user'}
+                    onChange={() => setRole('user')}
                   />
                   <span className="label-text">User</span>
                 </label>
@@ -117,10 +117,10 @@ function Signup() {
                   <input
                     type="radio"
                     name="role"
-                    value="Admin"
+                    value="admin"
                     className="radio radio-primary"
-                    checked={Role === 'Admin'}
-                    onChange={() => setRole('Admin')}
+                    checked={Role === 'admin'}
+                    onChange={() => setRole('admin')}
                   />
                   <span className="label-text">Admin</span>
                 </label>
