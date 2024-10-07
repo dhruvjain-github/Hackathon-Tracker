@@ -8,7 +8,7 @@ function Homepage() {
     <div>
       <Navbar/>
       <Hero/>
-      <UpcomingHack/>
+      <UpcomingHack/> 
     </div>
   )
 }
