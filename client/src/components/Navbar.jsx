@@ -1,9 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function Navbar() {
+
+    const [Scrolled, setScrolled] = useState(false)
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                setScrolled(true)
+            }
+            else {
+                setScrolled(false)
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll)
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [])
+
     return (
-        <div className="navbar bg-white shadow-md">
+        <div className={`navbar bg-white shadow-md sticky top-0 transition-colors duration-300 ${Scrolled ? 'bg-gray-200' : 'bg-white'}`}>
             {/* Dropdown menu for smaller screens */}
             <div className="flex-none">
                 <div className="dropdown">
@@ -40,7 +59,7 @@ function Navbar() {
 
             {/* Logo/Title in the center */}
             <div className="flex-1 text-center">
-                <Link className="btn btn-ghost normal-case text-xl text-purple-700 hover:bg-purple-100 font-fredoka" to="/">
+                <Link className="btn btn-ghost normal-case text-2xl text-purple-700 hover:bg-purple-100 font-fredoka" to="/">
                     Track-Hack
                 </Link>
             </div>
@@ -49,7 +68,7 @@ function Navbar() {
             <div className="flex-none gap-2">
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full border-2 border-yellow-400">
+                        <div className="w-10 rounded-full">
                             <img
                                 alt="User Avatar"
                                 src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
@@ -59,17 +78,17 @@ function Navbar() {
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-white rounded-box z-[1] mt-3 w-52 p-2 shadow text-purple-700">
                         <li>
-                            <a className="hover:bg-purple-100">
+                            <Link to={`/profile/:id`} className="hover:bg-purple-100 cursor-pointer">
                                 Profile
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a className="hover:bg-purple-100">Settings</a>
-                        </li>
-                        <li>
-                            <a className="hover:bg-purple-100">Logout</a>
+                            <Link className="bg-red-600 text-white font-bold cursor-pointer hover:bg-red-700 mt-2 " to="/">
+                                Logout
+                            </Link>
                         </li>
                     </ul>
+
                 </div>
             </div>
         </div>

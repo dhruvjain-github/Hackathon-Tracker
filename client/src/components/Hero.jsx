@@ -16,7 +16,7 @@ function Hero() {
           <p className="text-gray-500 text-md font-medium">
             Join our community of innovators and take your skills to the next level.
           </p> {/* Added additional text */}
-          <button className="btn bg-purple-600 text-yellow-400 border-none hover:bg-yellow-400 hover:text-purple-600 text-lg font-semibold mt-4">
+          <button className="btn bg-purple-600 text-white border-none hover:bg-purple-700 hover:text-white text-lg mt-7 font-bold ">
             Get Started
           </button> {/* Purple button with yellow hover */}
         </div>
