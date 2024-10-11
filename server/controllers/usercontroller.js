@@ -66,13 +66,15 @@ export const login=async(req,res)=>{
             {expiresIn: '2h' }
         )
 
-        res.status(200).json({newuser:{
-            id:newuser._id,
-            username:newuser.username,
-            email:newuser.email
-        },token})
+        res.status(200).json({
+            id:existingUser._id,
+            username:existingUser.username,
+            email:existingUser.email,
+            token
+        })
 
     } catch (error) {
+        console.error("Error logging in user:", error)
         res.status(500).json({ message: 'Error login user', error })
     }
 }
