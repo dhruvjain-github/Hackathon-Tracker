@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import user from '../../public/user-logo.png'
 function Navbar() {
 
     const [Scrolled, setScrolled] = useState(false)
@@ -71,7 +71,7 @@ function Navbar() {
                         <div className="w-10 rounded-full">
                             <img
                                 alt="User Avatar"
-                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                src={user}/>
                         </div>
                     </div>
                     <ul
