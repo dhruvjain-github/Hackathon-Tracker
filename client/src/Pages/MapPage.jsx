@@ -32,12 +32,13 @@ const MapPage = () => {
       <Navbar />
 
       {/* Interactive Text */}
-      <div className="text-center p-4 bg-blue-100 rounded-lg shadow-md mx-4 md:mx-20 lg:mx-40 mt-5 mb-6">
-        <h2 className="text-2xl font-semibold text-blue-700">Explore the Hackathons Near You</h2>
-        <p className="mt-2 text-gray-600">
-          Find hackathons happening in your area. Your location is marked on the map below. You can zoom in and explore nearby events!
-        </p>
-      </div>
+      <div className="text-center p-4 bg-purple-100 rounded-lg shadow-md mx-4 md:mx-20 lg:mx-40 mt-5 mb-6">
+  <h2 className="text-2xl font-semibold text-purple-800">Explore the Hackathons Near You</h2>
+  <p className="mt-2 text-gray-700">
+    Find hackathons happening in your area. Your location is marked on the map below. You can zoom in and explore nearby events!
+  </p>
+</div>
+
 
       {/* Map Section */}
       <div className="mx-4 md:mx-20 lg:mx-40">
