@@ -22,7 +22,7 @@ function Navbar() {
     }, [])
 
     return (
-        <div className={`navbar bg-white shadow-md sticky top-0 transition-colors duration-300 ${Scrolled ? 'bg-gray-200' : 'bg-white'}`}>
+        <div className={`navbar bg-white shadow-md  top-0 transition-colors duration-300  ${Scrolled ? 'bg-gray-200' : 'bg-white'}`}>
             {/* Dropdown menu for smaller screens */}
             <div className="flex-none">
                 <div className="dropdown">

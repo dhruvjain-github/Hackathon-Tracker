@@ -1,5 +1,7 @@
 import HackathonModel from "../models/HackathonModel.js";
 
+
+// works Successfully
 export const getHackathon = async (req, res) => {
     try {
         const allHackathons = await HackathonModel.find(); 
@@ -10,7 +12,7 @@ export const getHackathon = async (req, res) => {
     }
 };
 
-
+// works SuccessFully
 export const getHackathonById = async (req, res) => {
     try {
         const { id } = req.params; 

@@ -35,9 +35,18 @@ export const deleteuser=async(req,res)=>{
     }
 }
 
+// wroks Successfully
 export const createHackathon = async (req, res) => {
+    
     try {
         const { name, location, startDate, endDate, participants, prize, teamSize, problemStatement, registrationLink } = req.body;
+
+        const existingHack= await HackathonModel.findOne({name,location,startDate,endDate})
+        
+        if(existingHack)
+        {
+            return res.status(409).json({message:"hackathon already exist"})
+        }
 
         const newHackathon = await HackathonModel.create({
             name,

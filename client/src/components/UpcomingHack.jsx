@@ -18,11 +18,14 @@ function UpcomingHack() {
     }, []);
 
     return (
-        <div className="grid grid-cols-2 gap-4">
-            {Hackathons.map((item) => (
-                <Card item={item} key={item._id} />
-            ))}
-        </div>
+        <>
+            <h1 className="text-5xl font-extrabold text-purple-600 underline ml-16 mb-12 mt-5 ">Hackathons </h1>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
+                {Hackathons.map((item) => (
+                    <Card item={item} key={item._id} />
+                ))}
+            </div>
+        </>
     );
 }
 

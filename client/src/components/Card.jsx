@@ -3,20 +3,30 @@ import { Link } from 'react-router-dom';
 
 function Card({ item }) {
     return (
-        <div key={item._id} className="card bg-base-100 w-96 shadow-xl">
-            <div className="card-body">
-                <h2 className="card-title">{item.name}</h2>
-                <div>
-                    <h4>Location:</h4><h5>{item.location}</h5>
-                    <h4>Start Date:</h4><h5>{item.startDate}</h5>
-                    <h4>Participants:</h4><h5>{item.participants}</h5>
-                    <h4>Prize:</h4><h5>{item.prize}</h5>
-                    <h4>Team Size:</h4><h5>{item.teamSize}</h5>
-                    <h4>Problem Statement:</h4><h5>{item.problemStatement}</h5>
+        <div className="card bg-gray-100 shadow-2xl rounded-lg overflow-hidden hover:cursor-pointer transition-transform duration-300 transform hover:scale-105 hover:shadow-3xl">
+            <div className="card-body h-full overflow-auto">
+                <h2 className="text-3xl font-bold text-purple-700 mb-2 sticky top-0 bg-gray-100 p-2 underline font-montserrat">
+                    {item.name}
+                </h2>
+                <div className="grid grid-cols-2 gap-4">
+                    <div className="font-semibold text-purple-500 font-roboto">Location:</div>
+                    <div className="font-roboto">{item.location}</div>
+                    <div className="font-semibold text-purple-500 font-roboto">Start Date:</div>
+                    <div className="font-roboto">{new Date(item.startDate).toLocaleDateString()}</div>
+                    <div className="font-semibold text-purple-500 font-roboto">Participants:</div>
+                    <div className="font-roboto">{item.participants}</div>
+                    <div className="font-semibold text-purple-500 font-roboto">Prize:</div>
+                    <div className="font-roboto">{item.prize}</div>
+                    <div className="font-semibold text-purple-500 font-roboto">Team Size:</div>
+                    <div className="font-roboto">{item.teamSize}</div>
+                    <div className="font-semibold text-purple-500 font-roboto">Problem Statement:</div>
+                    <div className="font-roboto">{item.problemStatement}</div>
                 </div>
-                <div className="card-actions justify-end">
+                <div className="card-actions justify-end mt-4">
                     <Link to="https://devfolio.co/hackathons" target="_blank">
-                        <button className="btn btn-primary">Register Now</button>
+                        <button className="btn btn-primary bg-purple-700 text-white hover:bg-purple-600">
+                            Register Now
+                        </button>
                     </Link>
                 </div>
             </div>

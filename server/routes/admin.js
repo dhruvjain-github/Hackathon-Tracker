@@ -5,8 +5,8 @@ import {protect} from '../middleware/authMiddleware.js'
 
 const router=express.Router()
 
-router.use(isadmin)
-router.use(protect)
+// router.use(isadmin)
+// router.use(protect)
 
 router.get('/users',getalluser)
 router.delete('/user/:id',deleteuser)
