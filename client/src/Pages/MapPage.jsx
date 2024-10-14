@@ -33,12 +33,11 @@ const MapPage = () => {
 
       {/* Interactive Text */}
       <div className="text-center p-4 bg-purple-100 rounded-lg shadow-md mx-4 md:mx-20 lg:mx-40 mt-5 mb-6">
-  <h2 className="text-2xl font-semibold text-purple-800">Explore the Hackathons Near You</h2>
-  <p className="mt-2 text-gray-700">
-    Find hackathons happening in your area. Your location is marked on the map below. You can zoom in and explore nearby events!
-  </p>
-</div>
-
+        <h2 className="text-2xl font-semibold text-purple-800">Explore the Hackathons Near You</h2>
+        <p className="mt-2 text-gray-700">
+          Find hackathons happening in your area. Your location is marked on the map below. You can zoom in and explore nearby events!
+        </p>
+      </div>
 
       {/* Map Section */}
       <div className="mx-4 md:mx-20 lg:mx-40">
@@ -50,9 +49,10 @@ const MapPage = () => {
             style={{ height: '70vh', width: '100%', borderRadius: '10px', overflow: 'hidden' }}
             className="shadow-lg"
           >
+            {/* Remove the initial TileLayer and add the street view TileLayer */}
             <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" // CartoDB Light Tiles for better street view
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attributions">CARTO</a>'
             />
             <Marker position={currentLocation}>
               <Popup>You are here!</Popup>
