@@ -64,6 +64,7 @@ const MapPage = () => {
         )}
       </div>
     </div>
+    
   );
 };
 
