@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   password: {
     type: String,
@@ -15,10 +15,14 @@ const userSchema = new mongoose.Schema({
   role: {
     type: String,
     enum: ['user', 'admin'],
-    default: 'user' 
-  }
-})
+    default: 'user',
+  },
+  // profilePic: {
+  //   type: String,
+  //   default: "defaultProfilePic.png" // Set a default profile picture path
+  // }
+});
 
-const User = mongoose.model("user", userSchema)
+const User = mongoose.model("user", userSchema);
 
-export default User
+export default User;

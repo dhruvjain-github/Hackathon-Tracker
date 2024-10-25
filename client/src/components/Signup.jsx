@@ -27,6 +27,13 @@ function Signup() {
     console.log('Submitting form with:', signupdata);
     try {
       const response = await axios.post("http://localhost:4000/api/auth/signup", signupdata);
+      const {token,newuser}=response.data
+      localStorage.setItem("token",token)
+      localStorage.setItem("userId",newuser.id)
+      localStorage.setItem("username",newuser.username)
+      localStorage.setItem("email",newuser.email)
+
+
       console.log('Signup successful:', response.data);
       toast.success("Signup successful!");
 

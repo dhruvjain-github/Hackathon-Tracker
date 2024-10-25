@@ -3,7 +3,8 @@ import { Routes, Route} from "react-router-dom";
 import Home from './Pages/Homepage';
 import MapPage from './Pages/MapPage';
 import Login from './components/Login';
-import Signup from './components/Signup'
+import Signup from './components/Signup';
+import Profilepage from './Pages/Profilepage';
 import 'leaflet/dist/leaflet.css';
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
       <Route path='/map' element={<MapPage/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/signup' element={<Signup/>}/>
-      
+      <Route path='/profile/:id' element={<Profilepage/>}/>
     </Routes>
    </div>
   )
