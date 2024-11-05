@@ -2,6 +2,7 @@
 
 An interactive platform that tracks upcoming hackathons in the next 3 months and displays live events happening in the next 7 days. Users can view the details of each hackathon, track their distance to events, and register for them via the host websites.
 
+
 ---
 
 ## 🚀 **Purpose**
